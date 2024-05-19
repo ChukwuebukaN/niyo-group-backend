@@ -4,8 +4,8 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { join } from "path";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
-import { Gowns } from "./gowns/entities/gown.entity";
 import { GownsModule } from "./gowns/gowns.module";
+import { UserModule } from "./user/user.module";
 
 @Module({
   imports: [
@@ -20,11 +20,11 @@ import { GownsModule } from "./gowns/gowns.module";
         password: ConfigService.get("DATABASE_PASSWORD"),
         database: ConfigService.get("DATABASE_NAME"),
         entities: [join(process.cwd(), "dist/**/*.entity.js")],
-        synchronize: true,
       }),
       inject: [ConfigService],
     }),
     GownsModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

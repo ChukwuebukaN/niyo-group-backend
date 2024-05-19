@@ -41,12 +41,12 @@ export class GownsService {
   }
 
   /** This endpoint is used to delete a specific Gown */
-  async DeleteSpecificGown(id: number) {
+  async DeleteSpecificGown(id) {
     /** Check if the Gown exists */
     const specificGown = await this.gownsRepository.findOne({
       where: { id: id },
     });
 
-    return await this.gownsRepository.remove(specificGown);
+    return await this.gownsRepository.delete(specificGown);
   }
 }

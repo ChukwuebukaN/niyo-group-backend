@@ -16,11 +16,7 @@ import { GetGownDto } from "./dto/get-gown.dto";
 @Controller("gowns/")
 export class GownsController {
   constructor(private readonly gownsService: GownsService) {}
-  /** This endpoint is used to delete a specific Gown */
-  @Delete("delete-specific/:id")
-  DeleteSpecificGown(@Param("id") id: number) {
-    return this.gownsService.DeleteSpecificGown(id);
-  }
+
   /** This endpoint is used to add a Gown */
   @Post("add")
   AddGown(@Body() addGownDto: AddGownDto) {
@@ -29,7 +25,7 @@ export class GownsController {
 
   /** This endpoint is used to get a specific Gown */
   @Get("/get-specific/:id")
-  geGetSpecificGownt(@Param("id") id: number) {
+  GetSpecificGown(@Param("id") id: number) {
     return this.gownsService.GetSpecificGown(id);
   }
 
@@ -46,5 +42,11 @@ export class GownsController {
     @Body() updateGownDto: UpdateGownDto,
   ) {
     return this.gownsService.EditSpecificGown(id, updateGownDto);
+  }
+
+  /** This endpoint is used to delete a specific Gown */
+  @Delete("delete-specific/:id")
+  DeleteSpecificGown(@Param("id") id: number) {
+    return this.gownsService.DeleteSpecificGown(id);
   }
 }
