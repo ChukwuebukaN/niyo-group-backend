@@ -1,0 +1,41 @@
+1 - start local mysql db
+run on bash - mysql.server start
+
+2 - Use it to log in: When prompted, enter:777CxtuHR=CL<k!FN
+
+3 - to create your project database
+Still in the mysql> prompt, run:
+
+CREATE DATABASE niyo-group-db;
+
+4 - Then confirm it exists: 
+
+SHOW DATABASES;
+
+
+5 - Inside your MySQL shell - Set up a new different db user so you do not use root access:
+
+CREATE DATABASE niyo_group_database;
+
+CREATE USER 'niyo_group_user'@'localhost' IDENTIFIED BY '777CxtuHR=CL<k!FN';
+
+GRANT ALL PRIVILEGES ON niyo_group_database.* TO 'niyo_group_user'@'localhost';
+
+FLUSH PRIVILEGES;
+
+
+6 - Then your .env looks like:
+
+=127.0.0.1
+=3306
+=niyo_group_user
+=777CxtuHR=CL<k!FN
+=niyo_group_database
+
+7 - to stop session
+
+exit;
+
+8 - check status
+
+mysql.server status
